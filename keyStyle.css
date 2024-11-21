@@ -346,7 +346,7 @@ span{
     align-items:center;
     gap :2.5rem;
 }
-  .service-box{
+.service-box{
     background-color: var(--main-color);
     color:black;
     height:250px;
@@ -566,7 +566,6 @@ span{
     }
 
 }
-
 
 
 
