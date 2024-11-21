@@ -347,12 +347,15 @@ span{
     gap :2.5rem;
 }
 .service-box{
+  .service-box{
     background-color: var(--main-color);
     color:black;
     height:250px;
     border-radius:3rem;
     cursor:pointer;
     transition:0.3s ease ease-in-out;
+    overflow:auto;
+    width: 500px;
 }
 .service-box:hover{
     background:white;
