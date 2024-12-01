@@ -23,3 +23,25 @@ menuIcon.onclick = () => {
     menuIcon.classList.toggle("bx-x");
     navbar.classList.toggle('active');
 }
+
+
+
+const serviceBox = document.querySelector('.service-box');
+const videoPopup = document.querySelector('.video-popup');
+const video = videoPopup.querySelector('video');
+
+let hoverTimeout;
+
+serviceBox.addEventListener('mouseover', () => {
+    hoverTimeout = setTimeout(() => {
+        videoPopup.style.opacity = '1'; // Make the popup visible
+        video.play(); // Autoplay the video
+    }, 1000); // 2-second delay before video appears
+});
+
+serviceBox.addEventListener('mouseout', () => {
+    clearTimeout(hoverTimeout); // Cancel hover timeout
+    video.pause(); // Pause the video
+    video.currentTime = 0; // Reset video to start
+    videoPopup.style.opacity = '0'; // Hide the popup
+});
