@@ -46,19 +46,29 @@ serviceBox.addEventListener('mouseout', () => {
     videoPopup.style.opacity = '0'; // Hide the popup
 });
 
-// Show/hide skills-note based on skills section visibility
+// Show skills-note on scroll to skills section
 window.addEventListener('DOMContentLoaded', function() {
     const skillsSection = document.querySelector('.skills');
     const skillsNote = document.querySelector('.skills-note');
+    let noteShown = false;
+
+    function showSkillsNote() {
+        if (!noteShown && skillsNote) {
+            skillsNote.classList.add('visible');
+            noteShown = true;
+            setTimeout(() => {
+                skillsNote.classList.remove('visible');
+            }, 3000); // Show for 3 seconds
+        }
+    }
 
     function onScroll() {
         if (!skillsSection || !skillsNote) return;
         const rect = skillsSection.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         if (rect.top < windowHeight && rect.bottom > 0) {
-            skillsNote.classList.add('visible');
-        } else {
-            skillsNote.classList.remove('visible');
+            showSkillsNote();
+            window.removeEventListener('scroll', onScroll);
         }
     }
 
