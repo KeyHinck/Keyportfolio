@@ -110,7 +110,7 @@ span{
 }
 
 .home-img{
-    border-radius:50% ;
+    border-radius:50%;
 }
 .home-img img{
     position:relative;
@@ -799,6 +799,23 @@ body {
     margin: 0 auto;
 }
 .profile-video:hover {
+    box-shadow: 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+    transform: scale(1.1);
+}
+
+.profile-image {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    object-fit: cover;
+    transition: 0.4s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+.profile-image:hover {
     box-shadow: 0 0 50px var(--main-color), 0 0 100px var(--main-color);
     transform: scale(1.1);
 }
