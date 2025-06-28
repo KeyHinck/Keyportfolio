@@ -45,3 +45,23 @@ serviceBox.addEventListener('mouseout', () => {
     video.currentTime = 0; // Reset video to start
     videoPopup.style.opacity = '0'; // Hide the popup
 });
+
+// Show/hide skills-note based on skills section visibility
+window.addEventListener('DOMContentLoaded', function() {
+    const skillsSection = document.querySelector('.skills');
+    const skillsNote = document.querySelector('.skills-note');
+
+    function onScroll() {
+        if (!skillsSection || !skillsNote) return;
+        const rect = skillsSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < windowHeight && rect.bottom > 0) {
+            skillsNote.classList.add('visible');
+        } else {
+            skillsNote.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // Check on load in case already in view
+});
