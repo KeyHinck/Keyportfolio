@@ -6,13 +6,13 @@
     border:none;
     outline:none;
     scroll-behavior: smooth;
-    font-family: 'Poppins','sans-serif';
+    font-family: 'Montserrat', 'Poppins', 'sans-serif';
 }
 :root{
-    --bg-color: #111111;
-    --second-bg-color:#151515;
-    --text-color:white;
-    --main-color:#b86200ad;
+    --bg-color: rgba(17, 17, 17, 0.7); /* 70% opacity */
+    --second-bg-color: rgba(21, 21, 21, 0.5); /* 50% opacity */
+    --text-color: #e3e8ff; /* lighter blueish indigo for text */
+    --main-color: #3f51b5; /* blueish indigo accent */
 }
     /* --hover-background-color: #333333; */
   html{
@@ -190,17 +190,14 @@ span{
 }
 .text-animation span::after{
     content:'';
-    background-color: var(--bg-color);
+    background-color: #111111; /* fully opaque to completely hide text */
     position:absolute;
     width: calc(100% + 8px);
     height:100%;
-    border-left: 3px solid var(--bg-color);
+    border-left: 3px solid #111111;
     right:-13px;
-    animation:cursor 0.6s infinite, typing 20s steps(14)
-    infinite ;
-  
+    animation:cursor 0.6s infinite, typing 20s steps(14) infinite ;
     border-color:var(--text-color);
-
 }
 @keyframes cursor{
     to{
@@ -395,22 +392,39 @@ span{
     text-align:center;
     margin-bottom: 3rem;
 }
-.contact form .input-box{
+.contact form .input-box {
     display: flex;
     justify-content: center;
-    flex-wrap:wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
-.contact form .input-box input,
-.contact form textarea{
-    width:100%;
-    padding: 1.5rem;
+.contact form .input-box input {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    background: var(--second-bg-color);
+    color: var(--text-color);
+    border-radius: 1rem;
     font-size: 1.6rem;
-    color:var(--text-color);
-    background:var(--bg-color);
-    border-radius: 0.8rem;
-    border:2px solid var(--main-color);
-    margin:1 rem 0;
-    resize: none;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+.contact form .input-box input:focus {
+    box-shadow: 0 0 0 2px var(--main-color);
+}
+.contact form textarea {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    background: var(--second-bg-color);
+    color: var(--text-color);
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    resize: vertical;
 }
 .contact form btn{
     margin-top: 2rem;
@@ -595,7 +609,213 @@ span{
     pointer-events: auto; /* Enable interaction after visible */
 }
 
+/* Education Section Styles */
+.education {
+    background-color: var(--second-bg-color);
+}
 
+.education h2 {
+    margin-bottom: 5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.education-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.education-box {
+    background-color: var(--bg-color);
+    padding: 3rem 2rem 4rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: 0.2rem solid var(--main-color);
+    transition: 0.5s ease;
+}
+
+.education-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+
+.education-info h4 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+}
+
+.education-item, .certification-item {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.education-item h5, .certification-item h5 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.education-item p, .certification-item p {
+    font-size: 1.4rem;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+/* Skills Section Styles */
+.skills {
+    background-color: var(--bg-color);
+}
+
+.skills h2 {
+    margin-bottom: 5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.skills-category h3 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background-color: var(--second-bg-color);
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-color);
+    border: 0.1rem solid var(--main-color);
+    transition: 0.3s ease;
+}
+
+.skill-item:hover {
+    background-color: var(--main-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+/* Responsive Design for Education and Skills */
+@media(max-width: 895px) {
+    .education-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .education-info h4 {
+        font-size: 2rem;
+    }
+    
+    .skills-category h3 {
+        font-size: 2rem;
+    }
+}
+
+.skills-note {
+    text-align: center;
+    color: #ccc;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+}
+.skills-note.visible {
+    opacity: 0.8;
+    pointer-events: auto;
+}
+
+/* Background Video Styles */
+.bg-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+}
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+.bg-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.65); /* dark overlay for readability */
+    z-index: -1;
+    pointer-events: none;
+}
+
+body {
+    background: transparent;
+}
+
+.profile-video {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    object-fit: cover;
+    transition: 0.4s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+.profile-video:hover {
+    box-shadow: 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+    transform: scale(1.1);
+}
+
+section.contact label {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 700px) {
+    .contact form .input-box {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
 
 
 
