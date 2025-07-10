@@ -337,21 +337,42 @@ span{
     margin-bottom:5rem;
     color:white;
 }
-.services-container{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    align-items:center;
-    gap :2.5rem;
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(320px, auto);
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  justify-items: center;
+  align-items: stretch;
 }
-.service-box{
-    background-color: var(--main-color);
-    color:black;
-    height:250px;
-    border-radius:3rem;
-    cursor:pointer;
-    transition:0.3s ease ease-in-out;
-    overflow:auto;
-   width: 500px;
+.service-box {
+  background-color: var(--main-color);
+  color: black;
+  border-radius: 2rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+  flex: 1 1 320px;
+  min-width: 340px;
+  max-width: 540px;
+  box-sizing: border-box;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  height: auto;
+}
+.service-box video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px var(--main-color);
 }
 .service-box:hover{
     background:white;
@@ -377,6 +398,15 @@ span{
     font-weight: 400;
     max-height: 100px;
     margin:auto;
+}
+.service-box p {
+  font-size: 1.28rem;
+  line-height: 1.7;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
 }
 .contact{
     background-color: var(--second-bg-color);
@@ -697,21 +727,24 @@ span{
 }
 
 .skill-item {
-    background-color: var(--second-bg-color);
-    padding: 1.5rem 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: var(--text-color);
-    border: 0.1rem solid var(--main-color);
-    transition: 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px var(--main-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
 .skill-item:hover {
-    background-color: var(--main-color);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--main-color);
+  background: #fff;
+  color: var(--main-color);
+  box-shadow: 0 4px 16px var(--main-color);
 }
 
 /* Responsive Design for Education and Skills */
@@ -810,14 +843,19 @@ body {
     box-shadow: 0 0 25px var(--main-color);
     object-fit: cover;
     transition: 0.4s ease-in-out;
-    transform: scale(1);
+    transform: scale(0.92); /* Shrink image content slightly */
     cursor: pointer;
     display: block;
     margin: 0 auto;
+    background: #222; /* fallback background */
 }
 .profile-image:hover {
     box-shadow: 0 0 50px var(--main-color), 0 0 100px var(--main-color);
-    transform: scale(1.1);
+    transform: scale(1.02);
+}
+
+.profile-image-secondary {
+    transform: scale(0.82) !important;
 }
 
 section.contact label {
@@ -832,6 +870,57 @@ section.contact label {
         flex-direction: column;
         gap: 1rem;
     }
+}
+
+@media (max-width: 900px) {
+  .services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .service-box {
+    max-width: 98vw;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-box {
+    max-width: 100vw;
+    min-width: 160px;
+  }
+  .services-container {
+    gap: 1rem;
+  }
+}
+
+/* Improved scroll-on-hover for service boxes */
+.service-box-content {
+  max-height: 220px;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.3s;
+}
+
+.service-box:hover .service-box-content {
+  overflow-y: auto;
+  animation: scroll-up-content 6s linear forwards;
+}
+
+@keyframes scroll-up-content {
+  0% {
+    scroll-behavior: smooth;
+    /* No transform needed for native scroll */
+  }
+  100% {
+    /* No transform needed for native scroll */
+  }
+}
+
+/* Remove animation for video */
+.service-box video {
+  animation: none !important;
 }
 
 
